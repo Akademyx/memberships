@@ -1,0 +1,30 @@
+<a href='/groups'>Dashboard</a>
+
+
+    <h1><%= @g.name %></h1>
+
+    <% @group.each do |e| %>
+          <% if e.user_id == current_user.id  %>
+             <a href="/memberships/<%= @g.id %>" data-method="delete">Leave</a>
+          <% end %>
+          <% unless e.user_id == current_user.id %>
+                <a href="/memberships/<%= @g.id %>">Join</a>
+         <%end%>
+    <%end%>
+    <h3>Created by <%= @g.user.first_name%> <%= @g.user.last_name%></h3>
+
+    <h2> This line for test </h2>
+    <% if @b == nil %>
+         <a href="/memberships/<%= @g.id %>" data-method="delete">Leave</a>
+    <% else %>
+        <a href="/memberships/<%= @g.id %>">Join</a>
+    <%end %>
+    
+
+
+<h3>Members listing:</h3>
+<% if @members %>
+    <%  @members.each do |m| %>
+        <p><%= m.user.first_name %> <%= m.user.last_name%></p>
+        <%end%>
+    <%end%>
