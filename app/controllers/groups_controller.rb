@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
     def create
-        fail
+
         @group = Group.new(group_params)
         if @group.valid?
             Membership.create(user:current_user, group:@group)
